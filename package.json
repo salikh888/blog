@@ -18,5 +18,13 @@
     "dev": "nodemon index.js"
   },
   "author": "Salikh Sayfutdinov",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salikh888/blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/salikh888/blog/issues"
+  },
+  "homepage": "https://github.com/salikh888/blog#readme"
 }
