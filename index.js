@@ -1,6 +1,7 @@
 var express = require('express');
 
 var bodyParser = require('body-parser');
+var config = require('./config');
 
 var app = express();
 
@@ -23,6 +24,6 @@ app.post('/create', function (req, res) {
     res.redirect('/');
 });
 
-app.listen(3000, function (){
-    console.log('Слушаем порт 3000')
+app.listen(config.PORT, function (){
+    console.log('Слушаем порт ' + config.PORT);
 });
