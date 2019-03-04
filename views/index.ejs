@@ -1,26 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/create">Add</a>
+    <% include layout/header.ejs%>
 
-    <ul>
-        <% posts.forEach(function(post){ %>
-        <li>
-            <b>
-                <%=post.title%>
-            </b>
-            <br>
-            <%=post.body%>
-        </li>
-        <% }); %>
-    </ul>
+  <h3>Hello world</h3>
 
-</body>
-</html>
+    <% include layout/footer.ejs%>
