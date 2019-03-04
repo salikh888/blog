@@ -1,29 +1,15 @@
-var express = require('express');
+const app = require('./app');
+const database = require('./database');
+const config = require('./config');
 
-var bodyParser = require('body-parser');
-var config = require('./config');
-
-var app = express();
-
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
-
-var arr = ['hello', 'world', 'test'];
-
-app.get('/', function (req, res) {
-    res.render('index', {arr: arr});
-});
-
-app.get('/create', function (req, res) {
-    res.render('create');
-});
-
-app.post('/create', function (req, res) {
-    console.log(req.body);
-    arr.push(req.body.text);
-    res.redirect('/');
-});
-
-app.listen(config.PORT, function (){
-    console.log('Слушаем порт ' + config.PORT);
+database().then(info => {
+    console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
+    app.listen(config.PORT, function () {
+        console.log('Слушаем порт ' + config.PORT);
+    });
+})
+.catch(function (error) {
+    console.log(error);
+    console.error('Not connection');
+    process.exit(1);
 });

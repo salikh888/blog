@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongoose": "^5.4.17"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
@@ -14,8 +15,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js cross-env PORT = 3001",
-
+    "start": "node index.js cross-env PORT = 3000",
     "dev": "nodemon index.js"
   },
   "author": "Salikh Sayfutdinov",
