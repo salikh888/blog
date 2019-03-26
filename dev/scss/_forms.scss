@@ -30,6 +30,10 @@ button,
   &:hover {
     text-decoration: none;
   }
+  &.secondary {
+    background-color: $secondaryColor;
+    border: 1px solid $secondaryColor;
+  }
 }
 
 input,
@@ -50,6 +54,8 @@ textarea {
   &:hover {
     box-shadow: 0;
   }
+
+
   &:focus {
     border-color: lighten($primaryColor, 40%);
   }

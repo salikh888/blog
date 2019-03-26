@@ -8,8 +8,9 @@
   }
 
   form {
-    .login-button {
-      align-self: flex-end;
+    .buttons {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

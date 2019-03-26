@@ -4,7 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const plumber = require('gulp-plumber');
 
-gulp.task('scss',  function() {
+gulp.task('default',gulp.parallel('css'), function() {
     return gulp
         .src('dev/scss/**/*.scss')
         .pipe(plumber())
@@ -14,53 +14,13 @@ gulp.task('scss',  function() {
                 cascade: true
             })
         )
-        .pipe(cssnano())
+        // // .pipe(cssnano())
         .pipe(gulp.dest('public/stylesheets'))
 
 });
 
 
 
-gulp.task('default',gulp.parallel('scss'), () => {
+gulp.task('default',gulp.parallel('scss'), function()  {
     gulp.watch('dev/scss/**/*.scss', ['scss']);
 });
-
-
-
-
-// const gulp = require('gulp');
-// const sass = require('gulp-sass');
-// const autoprefixer = require('gulp-autoprefixer');
-// const cssnano = require('gulp-cssnano');
-// const browserSync = require('browser-sync');
-//
-// gulp.task('scss', () => {
-//     return (
-//         gulp
-//             .src('dev/scss/**/*.scss')
-//             .pipe(plumber())
-//             .pipe(sass())
-//             .pipe(
-//                 autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {
-//                     cascade: true
-//                 })
-//             )
-//             .pipe(cssnano())
-//             .pipe(gulp.dest('dist/css'))
-//             .pipe(browserSync.reload({ stream: true }))
-//     );
-// });
-//
-// gulp.task('browser-sync', () => {
-//     browserSync({
-//         server: {
-//             baseDir: 'dist'
-//         },
-//         notify: false
-//     });
-// });
-//
-// gulp.task('default', ['browser-sync', 'scss'], () => {
-//     gulp.watch('dev/scss/**/*.scss', ['scss']);
-//     gulp.watch('dist/*.html', browserSync.reload);
-// });
