@@ -1,10 +1,12 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const cssnano = require('gulp-cssnano');
-const plumber = require('gulp-plumber');
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var cssnano = require('gulp-cssnano');
+var plumber = require('gulp-plumber');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglifyjs');
 
-gulp.task('default',gulp.parallel('css'), function() {
+gulp.task('default', function() {
     return gulp
         .src('dev/scss/**/*.scss')
         .pipe(plumber())
@@ -14,13 +16,24 @@ gulp.task('default',gulp.parallel('css'), function() {
                 cascade: true
             })
         )
-        // // .pipe(cssnano())
+        .pipe(cssnano())
         .pipe(gulp.dest('public/stylesheets'))
-
 });
 
+gulp.task('scripts', function() {
+    return gulp
+        .src([
+            'dev/js/auth.js'
+        ])
+        .pipe(concat('scripts.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('public/javascripts'))
+});
 
+gulp.task('watch:styles', function() {
+    return gulp.watch('dev/scss/**/*.scss', gulp.parallel('default'))
+});
 
-gulp.task('default',gulp.parallel('scss'), function()  {
-    gulp.watch('dev/scss/**/*.scss', ['scss']);
+gulp.task('watch:js', function() {
+    return gulp.watch('dev/js/**/*.js', gulp.series('scripts'))
 });
