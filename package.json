@@ -25,8 +25,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js cross-env PORT = 3000",
-    "dev": "gulp & nodemon index.js"
+    "start": "node app.js cross-env PORT = 3000",
+    "dev": "gulp & nodemon app.js"
   },
   "author": "Salikh Sayfutdinov",
   "license": "ISC",
